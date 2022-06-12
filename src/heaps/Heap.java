@@ -66,6 +66,30 @@ public class Heap {
         }
     }
 
+    //COMPLEXITY OF BUILDING HEAP IS O(N)
+    //In heapify, you always remove the root element and then replace it with the last
+    //child node and then apply heapify
+    void heapify(int[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i;
+        int right = 2 * i + 1;
+
+        //check if the current node is maxheap respective, checking the left child
+        if (left < n && arr[left] > arr[largest]) {
+            largest = left;
+        }
+
+        //check if the current node is maxheap respective, checking the right child
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(largest, i);
+            heapify(arr, n, largest);
+        }
+    }
+
     public static void main(String[] args) {
         Heap h = new Heap();
         h.insert(50);
@@ -76,6 +100,16 @@ public class Heap {
         h.print();
 
         h.deleteFromHeap();
+
+        int[] heapArr = {-1, 54, 53, 55, 52, 50};
+        int n = 5;
+        for (int i = n / 2; i > 0; i--) {
+            h.heapify(heapArr, n, i);
+        }
+        System.out.println("Heapify");
+        for (int i = 1; i < n; i++) {
+            System.out.print(heapArr[i] + " ");
+        }
         h.print();
     }
 
