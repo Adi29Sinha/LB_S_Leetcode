@@ -90,6 +90,18 @@ public class Heap {
         }
     }
 
+    void heapSort(int[] arr, int n) {
+        int size = n;
+        while (size > 1) {
+            //Step1: swap(arr[size],arr[1])
+            swap(size, 1);
+            size--;
+
+            //step2: apply heap sort
+            heapify(arr, size, 1);
+        }
+    }
+
     public static void main(String[] args) {
         Heap h = new Heap();
         h.insert(50);
@@ -107,6 +119,13 @@ public class Heap {
             h.heapify(heapArr, n, i);
         }
         System.out.println("Heapify");
+        for (int i = 1; i < n; i++) {
+            System.out.print(heapArr[i] + " ");
+        }
+        h.print();
+
+        System.out.println("Heap sort");
+        h.heapSort(heapArr,n);
         for (int i = 1; i < n; i++) {
             System.out.print(heapArr[i] + " ");
         }
