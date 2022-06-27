@@ -33,6 +33,8 @@ public class isBinaryTreeHeap {
         if (root.left == null && root.right == null) {
             return true;
         }
+
+        //left node only
         if (root.right == null && root.left.data <= root.data) {
             return true;
         }
