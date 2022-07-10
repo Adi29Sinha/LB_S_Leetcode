@@ -1,4 +1,4 @@
-package common;
+package binarySearch;
 
 public class FirstBadVersion {
     static boolean arr[] = {false, false, false, false, true, true, true};
